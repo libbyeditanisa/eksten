@@ -15,7 +15,7 @@
               <h6 class="m-0 font-weight-bold text-primary">Edit Data User</h6>
             </div>
             <div class="card-body">
-              <form action="<?php echo site_url("UserController/edit") ?>" method="post"> 
+              <form action="<?php echo site_url("UserController/edit/") ?><?php echo $userdata->id; ?>" method="post"> 
                   <input type="hidden" name="id" value="<?php echo $userdata->id; ?>">
                   <div class="form-group">
                     <label>UserID</label>
@@ -24,9 +24,11 @@
                   <div class="form-group">
                     <label>Username</label>
                     <input type="text" name="username" class="form-control form-control-user" value="<?php echo $userdata->username ?>" required>
+                    <small class="text-danger"><?php echo form_error('username'); ?></small>
                   </div><div class="form-group">
                     <label>Password</label>
                     <input type="password" name="password" class="form-control form-control-user" value="<?php echo $userdata->password ?>" required>
+                    <small class="text-danger"><?php echo form_error('password'); ?></small>
                   </div>
               
                   <input type="hidden" name="create_date" value="<?php echo $userdata->create_date ?>">

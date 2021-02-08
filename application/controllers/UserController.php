@@ -23,6 +23,7 @@ class UserController extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('usermodel');
+		$this->load->library('form_validation');
 	}
 
 	public function index()
@@ -34,10 +35,22 @@ class UserController extends CI_Controller {
 	public function add()
 	{
 		if ($this->input->post()) {
+
+			$this->form_validation->set_rules('username', 'Username', 'trim|required|is_unique[tbuser.username]');
+			$this->form_validation->set_rules('password1', 'Password', 'trim|required|min_length[5]|matches[password]');
+			$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[5]|matches[password1]');
+
+			if ($this->form_validation->run() == true) {
 			$this->usermodel->save();
 			$this->session->set_flashdata('success', 'Data Berhasil Disimpan.');
 			redirect("UserController");
+			}else{
+
+		$data["userid"] = $this->usermodel->createId();
+		$this->load->view('user/page-user-add',$data);
+			}
 		}
+
 
 		$data["userid"] = $this->usermodel->createId();
 		$this->load->view('user/page-user-add',$data);
@@ -46,9 +59,21 @@ class UserController extends CI_Controller {
 	public function edit($id = null)
 	{
 		if ($this->input->post()) {
+
+
+			$this->form_validation->set_rules('username', 'Username', 'trim|required');
+			$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[5]');
+		
+
+			if ($this->form_validation->run() == true) {
 			$this->usermodel->update();
 			$this->session->set_flashdata('success', 'Data Berhasil Diedit.');
 			redirect("UserController");
+			}else{
+	$data["userdata"] = $this->usermodel->getById($id);
+ 		$this->load->view('user/page-user-edit', $data);
+			}
+			
 		}
 		$data["userdata"] = $this->usermodel->getById($id);
  		$this->load->view('user/page-user-edit', $data);

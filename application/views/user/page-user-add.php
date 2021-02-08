@@ -18,23 +18,26 @@
               <form action="<?php echo site_url("UserController/add") ?>" method="post"> 
                   <div class="form-group">
                     <label>UserID</label>
-                    <input type="text" name="idUser" class="form-control form-control-user" placeholder="" value="<?php echo $userid; ?>" readonly required>
+                    <input type="text" name="idUser" class="form-control form-control-user" placeholder="" value="<?php echo $userid; ?>" readonly >
                   </div>
                   <div class="form-group">
                     <label>Username</label>
-                    <input type="text" name="username" class="form-control form-control-user" placeholder="Masukkan username .." required>
+                    <input type="text" name="username" class="form-control form-control-user" placeholder="Masukkan username .." value="<?= set_value('username'); ?>">
+                      <small class="text-danger"><?php echo form_error('username'); ?></small>
                   </div>
                   <div class="form-group">
                     <label>Password</label>
-                    <input type="password" name="password" class="form-control form-control-user" placeholder="Masukkan password .." required>
+                    <input type="password" name="password1" class="form-control form-control-user" placeholder="Masukkan password .." >
+                      <small class="text-danger"><?php echo form_error('password1'); ?></small>
                   </div>
                   <div class="form-group">
                     <label>Confirm Password</label>
-                    <input type="password" name="conpass" class="form-control form-control-user" placeholder="Masukkan password .." required>
+                    <input type="password" name="password" class="form-control form-control-user" placeholder="Masukkan password .." >
+                      <small class="text-danger"><?php echo form_error('password'); ?></small>
                   </div>
                   <div class="form-group">
                     <label>User Level</label>
-                    <select name="level" id="select2" class="form-control form-control-user" required="">
+                    <select name="level" id="select2" class="form-control form-control-user" ="">
                       <option value="Admin">Admin</option>
                       <option value="Guest">User Guest</option>
                     </select>

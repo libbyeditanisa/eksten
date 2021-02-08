@@ -23,7 +23,8 @@ class PenjadwalanController extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('penjadwalanmodel');
-		$this->load->model('karyawanmodel');
+        $this->load->model('karyawanmodel');
+		$this->load->library('form_validation');
 	}
 	public function index()
 	{
@@ -37,6 +38,8 @@ class PenjadwalanController extends CI_Controller {
 	{	
 		$post = $this->input->post();
 		if ($this->input->post()) {
+    
+
 			$filet = str_replace("/", "_",$post["noJadwal"]);
 
 			$this->penjadwalanmodel->save();
