@@ -34,9 +34,20 @@ class KaryawanController extends CI_Controller {
 	public function add()
 	{
 		if ($this->input->post()) {
+
+			$this->form_validation->set_rules('nik', 'NIK', 'trim|required|is_unique[tbkaryawan.nik]');
+			$this->form_validation->set_rules('email', 'Email', 'trim|required|is_unique[tbkaryawan.email]');
+			$this->form_validation->set_rules('nama', 'nama', 'trim|required');
+			$this->form_validation->set_rules('notelp', 'No Telpon', 'trim|required');
+	
+
+			if ($this->form_validation->run() == true) {
 			$this->karyawanmodel->save();
 			$this->session->set_flashdata('success', 'Data Berhasil Disimpan.');
 			redirect("KaryawanController");
+			}else{
+				$this->load->view('karyawan/page-karyawan-add');
+			}
 		}
 
 		$this->load->view('karyawan/page-karyawan-add');
