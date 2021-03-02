@@ -19,19 +19,19 @@
                 <input type="hidden" name="id" value="<?php echo $karyawandata->id; ?>">
                   <div class="form-group">
                     <!-- <label>Nik</label> -->
-                    <input type="text" name="nik" value="<?php echo $karyawandata->nik; ?>" class="form-control form-control-user" placeholder="Nik .." required>
+                    <input type="text" name="nik" value="<?php echo $karyawandata->nik; ?>" class="form-control form-control-user" placeholder="Nik ..">
                   </div>
                   <div class="form-group">
                     <!-- <label>Nik</label> -->
-                    <input type="text" name="nama" value="<?php echo $karyawandata->nama; ?>" class="form-control form-control-user" placeholder="Nama .." required>
+                    <input type="text" name="nama" value="<?php echo $karyawandata->nama; ?>" class="form-control form-control-user" placeholder="Nama ..">
                   </div>
                   <div class="form-group">
                     <!-- <label>Nik</label> -->
-                    <input type="text" name="email" value="<?php echo $karyawandata->email; ?>" class="form-control form-control-user" placeholder="Email .." required>
+                    <input type="text" name="email" value="<?php echo $karyawandata->email; ?>" class="form-control form-control-user" placeholder="Email ..">
                   </div>
                   <div class="form-group">
                     <!-- <label>Nik</label> -->
-                    <input type="text" name="notelp" value="<?php echo $karyawandata->notelp; ?>" class="form-control form-control-user" placeholder="No Telepon .." required>
+                    <input type="text" name="notelp" value="<?php echo $karyawandata->notelp; ?>" class="form-control form-control-user" placeholder="No Telepon ..">
                   </div>
                   <div class="form-group">
                     <!-- <label>Nik</label> -->

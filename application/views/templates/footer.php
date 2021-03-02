@@ -35,7 +35,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="<?php echo site_url("LoginController/logout") ?>">Logout</a>
+          <a class="btn btn-primary" href="login.html">Logout</a>
         </div>
       </div>
     </div>
@@ -94,8 +94,7 @@
         // }); 
 
         $('#select').chosen({no_results_text:"Not found"});
-        $('#select2').chosen({no_results_text:"Not found"});
-        $('#select3').chosen({no_results_text:"Not found"});
+        // $('#select2').chosen({no_results_text:"Not found"});
     });
   </script>
 

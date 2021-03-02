@@ -10,59 +10,12 @@ class Auth extends CI_Controller
 		$this->load->model("authmodel");
 	}
 
-public function index()
+	public function index()
 	{
-		if ($this->session->userdata('username')){
-			redirect('user');
-		}
-
-
-
-		$this->form_validation->set_rules('username', 'username', 'trim|required');
-		$this->form_validation->set_rules('password', 'Password', 'trim|required');
-		if($this->form_validation->run() == false){
-		$data['title'] = 'login Page';
-		$this->load->view('templates/auth_header', $data);
+		$this->load->view('templates/auth_header'); 
 		$this->load->view('auth/login');
-		$this->load->view('templates/auth_footer');
-	}else{
-
-		$this->_login();
-		}
+		$this->load->view('templates/auth_footer'); 
 	}
-		
-	private function _login(){
-		$username = $this->input->post('username');
-		$password = $this->input->post('password');
-
-
-		$user = $this->db->get_where('tbuser', ['username' => $username])->row();
-			//usernya ada
-		if($user){
-			//jika usernya aktif
-									//cek password
-				if($user->password){
-				
-					 $this->session->set_userdata(['user_logged' => $user]);
-
-
-					redirect('welcome');
-					
-				}else{
-					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Password Salah
-</div>');
-			redirect('auth');
-				}
-
-
-
-		}else{
-			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">User tidak tersedia </div>');
-			redirect('auth');
-		}
-	}
-
-
 
 	public function registration()
 	{

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 17 Jan 2021 pada 13.50
--- Versi Server: 10.1.25-MariaDB
--- PHP Version: 7.0.21
+-- Waktu pembuatan: 14 Sep 2020 pada 11.31
+-- Versi server: 10.1.36-MariaDB
+-- Versi PHP: 5.6.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -37,18 +37,9 @@ CREATE TABLE `tbjadwal` (
   `waktu` time NOT NULL,
   `jumlahPeserta` int(11) NOT NULL,
   `keterangan` text NOT NULL,
-  `buktiUpload` text NOT NULL,
-  `status` enum('BELUM','PROSES','SUDAH') NOT NULL,
   `create_date` datetime NOT NULL,
   `update_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `tbjadwal`
---
-
-INSERT INTO `tbjadwal` (`id`, `noJadwal`, `tanggal`, `namaPerusahaan`, `idKaryawan`, `waktu`, `jumlahPeserta`, `keterangan`, `buktiUpload`, `status`, `create_date`, `update_date`) VALUES
-(1, '0001-JDWL/2021', '2021-01-17', 'PT Telkom', '2010456897', '15:00:00', 100, 'Sosialisasi ', 'button_runny_nose_sneeze_tissue_coronavirus_symptom_icon_143123.png', 'SUDAH', '2021-01-17 18:58:03', '2021-01-17 19:50:18');
 
 -- --------------------------------------------------------
 
@@ -72,8 +63,7 @@ CREATE TABLE `tbkaryawan` (
 --
 
 INSERT INTO `tbkaryawan` (`id`, `nik`, `nama`, `email`, `notelp`, `alamat`, `create_date`, `update_date`) VALUES
-(1, '2010456897', 'Rian Fadilla', 'rian@gmail.com', '08975689123', 'Lampung', '2020-09-14 12:16:17', '0000-00-00 00:00:00'),
-(2, '2015456880', 'Ridho Kurniawan', 'ridho@gmail.com', '08992780990', 'Kemiling, Bandar Lampung', '2020-10-18 19:15:03', '0000-00-00 00:00:00');
+(1, '2010456897', 'Rian Fadilla', 'rian@gmail.com', '08975689123', 'Lampung', '2020-09-14 12:16:17', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -92,54 +82,49 @@ CREATE TABLE `tbuser` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbuser`
---
-
-INSERT INTO `tbuser` (`id`, `idUser`, `username`, `password`, `userLevel`, `create_date`, `update_date`) VALUES
-(1, '0001/USR', 'admin', '12345', 'Admin', '2021-01-17 00:00:00', '2021-01-17 00:00:00'),
-(2, '0002/USR', '2010456897', '123456', 'Guest', '2021-01-17 19:20:08', '0000-00-00 00:00:00');
-
---
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `tbjadwal`
+-- Indeks untuk tabel `tbjadwal`
 --
 ALTER TABLE `tbjadwal`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tbkaryawan`
+-- Indeks untuk tabel `tbkaryawan`
 --
 ALTER TABLE `tbkaryawan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tbuser`
+-- Indeks untuk tabel `tbuser`
 --
 ALTER TABLE `tbuser`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `tbjadwal`
+-- AUTO_INCREMENT untuk tabel `tbjadwal`
 --
 ALTER TABLE `tbjadwal`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `tbkaryawan`
+--
+ALTER TABLE `tbkaryawan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
--- AUTO_INCREMENT for table `tbkaryawan`
---
-ALTER TABLE `tbkaryawan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `tbuser`
+-- AUTO_INCREMENT untuk tabel `tbuser`
 --
 ALTER TABLE `tbuser`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

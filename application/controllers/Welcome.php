@@ -18,14 +18,6 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-
-	public function __construct()
-	{
-		parent::__construct();
-		$this->load->model("loginmodel");
-		if($this->loginmodel->isNotLogin()) redirect(site_url('LoginController'));
-	}
-	
 	public function index()
 	{
 		$this->load->view('welcome_message');
